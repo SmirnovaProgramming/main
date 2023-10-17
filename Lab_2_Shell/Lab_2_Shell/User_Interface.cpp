@@ -98,6 +98,7 @@ void Print_Menu()
 
 void Main_Menu()
 {
+	//Функция реализует главное зацикленное меню
 	std::vector <int> vect;
 	std::vector <int> copyvect;
 	setlocale(LC_ALL, "RU");
@@ -109,8 +110,8 @@ void Main_Menu()
 		switch (UserChoise) {
 		case StartProgramm:
 			Input_From_File(vect);
-			copyvect = vect;
-			ShellSort(copyvect);
+			copyvect = vect; //копируем вектор
+			ShellSort(copyvect); //сортируем копию
 
 			std::cout << "Исходный вектор: " << std::endl;
 			for (int i = 0; i < vect.size(); i++) {

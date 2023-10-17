@@ -134,6 +134,7 @@
     <ClCompile Include="User_Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enum_For_Filework.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="User_Interface.h" />
     <ClInclude Include="Input_From_File.h" />

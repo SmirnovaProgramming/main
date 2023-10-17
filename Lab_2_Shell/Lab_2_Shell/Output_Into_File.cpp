@@ -5,33 +5,30 @@ void Output_Into_File(std::vector<int>& vect, std::vector<int>& vect2)
 {
 	std::string FileName;
 	std::ofstream file;
-	int SaveChoise = 0;
-	int SaveMethod = 0;
-	int FileMethod = 0;
-	int SaveData = 0;
+	int SaveChoise = 0; //Переменная, хранящая выбор 'сохранить или нет' пользователя
+	int SaveMethod = 0; //Метод сохранения (добавление в конце, перезапись, выбор другого файла) после ввода пути
+	int FileMethod = 0; //Переменная, хранящая выбор "создать ли файл или нет", если введённого файла не существует.
 	do {
 		std::cout << "1 - Сохранить в файл." << std::endl << "2 - Продолжить без сохранения." << std::endl << "> ";
 		SaveChoise = Check_Int();
 		switch (SaveChoise) {
 		case Save:
 			while (true) {
-				std::cout << "Выберите данные для сохранения:" << std::endl << "1 - Сохранить результат выполнения программы." << std::endl << "2 - Сохранить исходные данные." << std::endl << "> ";
-				SaveData = Check_Int();
-				while (SaveData != 1 && SaveData != 2) {
-					std::cout << "Такого пункта меню нету, попробуйте ввести другое число." << std::endl << "> ";
-					SaveData = Check_Int();
-				}
 				std::cout << "Введите путь к файлу для сохранения:" << std::endl << "> ";
 				FileName = Read_String_Without_Whitespace();
+				//Внутри условия цикла имя файла проверяется на наличие расширения .txt, является ли имя файла зарезервированным и есть ли в имени файла недопустимые символы
 				while (Is_Reserved_Filename(Get_Filename(FileName)) || Filename_Forbidden_Characters_Check(Get_Filename(FileName)) || !Txt_Check(Get_Filename(FileName))) {
 					std::cout << "Недопустимое название или формат файла. Попробуйте еще раз." << std::endl << "> ";
 					FileName = Read_String_Without_Whitespace();
 				}
+				//Проверка существования файла. Если файл существует, его предлагается запустить в одном из двух режимов, либо выбрать другой файл.
 				if (File_Exists(FileName)) {
 					do {
 						std::cout << "Файл уже существует. Выберите режим ввода: " << std::endl << "1 - Перезаписать файл" << std::endl << "2 - Записать в конец файла" << std::endl << "3 - Выбрать другой файл" << std::endl << "> ";
 						SaveMethod = Check_Int();
 						switch (SaveMethod) {
+						//В зависимости от выбора пользователя, файл открывается, и содержимое стирается, файл открывается,
+						//и к содержимому в конец добавляются полученные данные
 						case RewriteFile:
 							file.open(FileName, std::ios::trunc);
 							break;
@@ -47,11 +44,15 @@ void Output_Into_File(std::vector<int>& vect, std::vector<int>& vect2)
 						}
 					} while (SaveMethod != RewriteFile && SaveMethod != WriteToTheEndOfTheFile && SaveMethod != SelectAnotherFile);
 				}
+				else if (Only_Read(FileName)) {
+					std::cout << "Ошибка доступа к файлу. Файл доступен только для чтения." << std::endl;
+					break;
+				} //Если файла не существует, выходим из условия.
 				if (SaveMethod == RewriteFile || SaveMethod == WriteToTheEndOfTheFile || !File_Exists(FileName)) {
 					break;
 				}
 			}
-			if (!File_Exists(FileName)) {
+			if (!File_Exists(FileName)) { //Если файла не существует, предлагаем создать его или продолжить без сохранения
 				do {
 					std::cout << "Файла по данному пути не найдено, хотите создать его?" << std::endl
 						<< "1 - Создать файл." << std::endl << "2 - Продолжить без сохранения." << std::endl << "> ";
@@ -68,11 +69,10 @@ void Output_Into_File(std::vector<int>& vect, std::vector<int>& vect2)
 					}
 				} while (FileMethod != CreateFile && FileMethod != ContunueWithoutCreatingFile);
 			}
-			else if (Only_Read(FileName)) {
-				std::cout << "Ошибка доступа к файлу. Файл доступен только для чтения." << std::endl;
-				break;
-			}
-			if ((SaveMethod == RewriteFile || SaveMethod == WriteToTheEndOfTheFile || FileMethod == CreateFile) && SaveData == 1) {
+			//Проверяем проставлены ли параметры метода сохранения (перезапись или добавление) 
+			// и выбрана ли опция сохранения в файл или продолжения без сохранения 
+			//Перед записью вектора в файл.
+			if (SaveMethod == RewriteFile || SaveMethod == WriteToTheEndOfTheFile || FileMethod == CreateFile ) {
 				file << "Исходный вектор: " << '\n';
 				for (int i = 0; i < vect.size(); i++) {
 					file << vect[i] << ' ';
@@ -81,15 +81,6 @@ void Output_Into_File(std::vector<int>& vect, std::vector<int>& vect2)
 				file << '\n' << "Сортированный вектор:" << '\n';
 				for (int i = 0; i < vect2.size(); i++) {
 					file << vect2[i] << ' ';
-				}
-				}
-			else if ((SaveMethod == RewriteFile || SaveMethod == WriteToTheEndOfTheFile || FileMethod == CreateFile) && SaveData == 2) {
-				file << vect.size() << '\n';
-				for (int i = 0; i < vect.size(); i++) {
-					for (int i = 0; i < vect.size(); i++) {
-						file << vect[i] << ' ';
-						if (i == vect.size() - 1) file << '\n';
-					}
 				}
 			}
 			file.close();
