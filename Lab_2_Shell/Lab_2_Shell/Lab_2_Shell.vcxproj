@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms_For_Filework.cpp" />
     <ClCompile Include="Input_From_File.cpp" />
+    <ClCompile Include="Module_Tests.cpp" />
     <ClCompile Include="Output_Into_File.cpp" />
     <ClCompile Include="Sort.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -135,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum_For_Filework.h" />
+    <ClInclude Include="Algorithms_For_Filework.h" />
+    <ClInclude Include="Module_Tests.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="User_Interface.h" />
     <ClInclude Include="Input_From_File.h" />

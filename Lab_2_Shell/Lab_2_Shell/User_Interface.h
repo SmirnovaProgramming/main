@@ -1,11 +1,11 @@
 #pragma once
-
+#include <vector>
 enum PrintMenu {
 	StartProgramm = 1,
-	StartModuleTests = 2,
-	StopProgramm = 3
+	StartModuleTests,
+	StopProgramm
 };
 
 void Print_Menu();
 void Main_Menu();
-void Module_Tests();
+void Start_Programm(std::vector <int>& vect, std::vector <int>& copyVect);

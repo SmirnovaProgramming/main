@@ -1,17 +1,17 @@
 #pragma once
 enum SaveListMenu {
 	Save = 1,
-	ContinueWithoutSaving = 2
+	ContinueWithoutSaving
 };
 
 enum SaveMethod {
 	RewriteFile = 1,
-	WriteToTheEndOfTheFile = 2,
-	SelectAnotherFile = 3
+	WriteToTheEndOfTheFile,
+	SelectAnotherFile
 };
 
 enum CreatingAFile {
 	CreateFile = 1,
-	ContunueWithoutCreatingFile = 2
+	ContunueWithoutCreatingFile
 };
 

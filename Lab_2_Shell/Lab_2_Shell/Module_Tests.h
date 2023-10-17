@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,4 +8,4 @@
 #include <limits>
 #include <vector>
 
-void Input_From_File(std::vector<int>& vect);
+void Module_Tests();
