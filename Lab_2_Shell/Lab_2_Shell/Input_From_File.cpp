@@ -6,7 +6,7 @@
 /// <param name="vect"> вектор, заполняемый значениями из файла </param>
 void Input_From_File(std::vector<int>& vect)
 {
-	bool Path_Is_Correct = false; //флаг проверки корректности введённого пути
+	bool Path_Is_Correct = false; //флаг проверки корректности введённого пути 
 	bool File_Is_Correct = true; //флаг проверки корректности файла
 	int elements = 0; //кол-во элементов, которые будут переданы в вектор
 	int intTmp; //переменная для временного хранения элемента из файла

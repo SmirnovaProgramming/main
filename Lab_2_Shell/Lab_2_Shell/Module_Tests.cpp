@@ -16,8 +16,11 @@ void Module_Tests() {
 	std::string path;
 	std::string filename;
 	std::ifstream file;
-	std::vector<std::string> stpaths{ "A.txt", "B.txt", "C.txt", "D.txt", "E.txt" };
-	std::vector<std::string> endpaths{ "A1.txt", "B1.txt", "C1.txt", "D1.txt", "E1.txt" };
+	std::vector<std::string> stpaths{ "..\\Lab_2_Shell\\test_files\\A.txt", "..\\Lab_2_Shell\\test_files\\B.txt", "..\\Lab_2_Shell\\test_files\\C.txt", 
+									"..\\Lab_2_Shell\\test_files\\D.txt", "..\\Lab_2_Shell\\test_files\\E.txt" };
+	
+	std::vector<std::string> endpaths{ "..\\Lab_2_Shell\\test_files\\A1.txt", "..\\Lab_2_Shell\\test_files\\B1.txt", "..\\Lab_2_Shell\\test_files\\C1.txt",
+									"..\\Lab_2_Shell\\test_files\\D1.txt", "..\\Lab_2_Shell\\test_files\\E1.txt" };
 
 	//Проверка существования файлов тестовых данных в папке программы.
 
@@ -25,7 +28,6 @@ void Module_Tests() {
 
 		if (!File_Exists(stpaths[i]) || !File_Exists(endpaths[i])) {
 			Files_Exists = false;
-			std::cout << "HELP GURL" << std::endl;
 		}
 
 	}
