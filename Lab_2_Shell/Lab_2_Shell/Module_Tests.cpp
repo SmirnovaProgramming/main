@@ -9,8 +9,8 @@ void Module_Tests() {
 
 	std::vector<int> vect;
 	std::vector<int> resvect;
-	bool Is_Sorting_Correct = true;
-	bool Files_Exists = true;
+	bool isSortingCorrect = true;
+	bool doFilesExist = true;
 	int numberfromfile = 0;
 	int numofelementsfromfile = 0;
 	std::string path;
@@ -27,12 +27,12 @@ void Module_Tests() {
 	for (int i = 0; i < endpaths.size(); i++) {
 
 		if (!File_Exists(stpaths[i]) || !File_Exists(endpaths[i])) {
-			Files_Exists = false;
+			doFilesExist = false;
 		}
 
 	}
 	//Модульные тесты выполняются только в случае существования файлов.
-	if (Files_Exists) {
+	if (doFilesExist) {
 
 		for (int i = 0; i < endpaths.size(); i++)
 		{
@@ -76,7 +76,7 @@ void Module_Tests() {
 
 			//Проверка значений в первом и втором векторе. Каждое первое и последующее значения должны совпадать.
 			for (int c = 0; c < vect.size(); c++) {
-				if (vect[c] != resvect[c]) Is_Sorting_Correct = false;
+				if (vect[c] != resvect[c]) isSortingCorrect = false;
 			}
 
 			//Очищаем векторы перед следующей итерацией
@@ -85,9 +85,9 @@ void Module_Tests() {
 
 		}
 		
-		if (!Is_Sorting_Correct) { std::cout << "Сортировка работает некорректно. Модульный тест завершён." << std::endl; }
+		if (!isSortingCorrect) { std::cout << "Сортировка работает некорректно. Модульный тест завершён." << std::endl; }
 
-		if (Is_Sorting_Correct) { std::cout << "Задание работает корректно. Тест завершён." << std::endl; }
+		if (isSortingCorrect) { std::cout << "Задание работает корректно. Тест завершён." << std::endl; }
 
 	}
 

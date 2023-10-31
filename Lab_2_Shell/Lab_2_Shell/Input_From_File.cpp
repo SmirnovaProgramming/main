@@ -6,8 +6,8 @@
 /// <param name="vect"> вектор, заполняемый значениями из файла </param>
 void Input_From_File(std::vector<int>& vect)
 {
-	bool Path_Is_Correct = false; //флаг проверки корректности введённого пути 
-	bool File_Is_Correct = true; //флаг проверки корректности файла
+	bool isPathCorrect = false; //флаг проверки корректности введённого пути 
+	bool isFileCorrect = true; //флаг проверки корректности файла
 	int elements = 0; //кол-во элементов, которые будут переданы в вектор
 	int intTmp; //переменная для временного хранения элемента из файла
 	std::string path; 
@@ -18,7 +18,7 @@ void Input_From_File(std::vector<int>& vect)
 	std::cout << "Введите путь файла:" << std::endl << "> ";
 	path = Read_String_Without_Whitespace(); //читаем введённый путь без пробелов.
 
-	while (!Path_Is_Correct) {
+	while (!isPathCorrect) {
 
 		//проверяем существует ли файл, введено ли имя с запрещёнными символами или введён ли формат пустой или отличный от .txt
 		if (!File_Exists(path)) {
@@ -43,7 +43,7 @@ void Input_From_File(std::vector<int>& vect)
 			continue;
 		};
 
-		Path_Is_Correct = true;
+		isPathCorrect = true;
 	}
 	filename = Get_File_Name(path); 
 	file.open(path); //открываем файл
@@ -63,7 +63,7 @@ void Input_From_File(std::vector<int>& vect)
 			
 			if (file.fail()) { //Если тип переданного значения не соответсвует типу переменной, то
 				file.clear(); //будет проставлен флаг ошибки как 1. Очищаем все флаги
-				File_Is_Correct = false; //И проставляем свой собственный флаг проверки корректности файла как false
+				isFileCorrect = false; //И проставляем свой собственный флаг проверки корректности файла как false
 				break;
 			}
 		}
@@ -71,7 +71,7 @@ void Input_From_File(std::vector<int>& vect)
 		file.clear();
 		file.seekg(0); //Переставляем курсор в начало файла после проверки всех значений.
 
-		if (File_Is_Correct) { //Заполняем вектор значениями, если файл корректный.
+		if (isFileCorrect) { //Заполняем вектор значениями, если файл корректный.
 
 			file >> elements; //Берём кол-во элементов из файла.
 		
@@ -82,11 +82,11 @@ void Input_From_File(std::vector<int>& vect)
 		
 		}
 
-		if (!File_Is_Correct) { //Если файл некорректный, то возвращаем сообщение об ошибке и закрываем файл.
+		if (!isFileCorrect) { //Если файл некорректный, то возвращаем сообщение об ошибке и закрываем файл.
 			std::cout << "В файле содержится некорректно заполненный массив. Исправьте файл и попробуйте еще раз." << std::endl;
 			file.close();
 		}
 	}
 	file.close();
-	} while (!File_Is_Correct); //В цикле вводится путь файла до тех пор, пока введённый файл не окажется корректно заполненным
+	} while (!isFileCorrect); //В цикле вводится путь файла до тех пор, пока введённый файл не окажется корректно заполненным
 }
