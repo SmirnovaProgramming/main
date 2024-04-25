@@ -7,7 +7,6 @@ def sort(sorting_sequence, place_number=0):
     Shell sort
     """
     sorted_sequence = sorting_sequence[:]
-    # Rearrange elements at each n/2, n/4, n/8, ... intervals
     
     interval = len(sorted_sequence) // 2
     while interval > 0:
