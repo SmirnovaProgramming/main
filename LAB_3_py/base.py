@@ -19,7 +19,6 @@ class Base:
         """
         процедура добавления поледовательности в базу данных
         """
-        date = datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
         assert type_ in ('raw', 'sorted'), 'incorrect type'
 
         if type(sequence) == str:
@@ -27,7 +26,7 @@ class Base:
         if not all([type(element) == str for element in sequence]):
             sequence = list(map(str, sequence))
         self.cursor.execute('INSERT INTO sequences (sequence, type) VALUES ("{}", "{}")'
-                            ''.format(' '.join(sequence), type_, date))
+                            ''.format(' '.join(sequence), type_))
         self.connection.commit()
     
     def show(self, type_):
