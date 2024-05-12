@@ -54,7 +54,7 @@ void Output_Into_File(std::vector<int>& vect, std::vector<int>& vect2)
 
 				}
 
-				else if (Only_Read(fileName)) {
+				else if (File_Exists(fileName) && Only_Read(fileName)) {
 					std::cout << "Ошибка доступа к файлу. Файл доступен только для чтения." << std::endl;
 					break;
 				}
