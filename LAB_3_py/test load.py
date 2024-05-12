@@ -66,6 +66,6 @@ for number in (100, 1000, 10000):
     except Exception:
         print('\tfail\n')
         traceback.print_exc()
-
+os.system("PAUSE")
 del b
 remove('test.db')
