@@ -2,7 +2,7 @@
 #include <vector>
 enum PrintMenu {
 	StartProgramm = 1,
-	//StartModuleTests,
+	StartModuleTests,
 	StopProgramm
 };
 

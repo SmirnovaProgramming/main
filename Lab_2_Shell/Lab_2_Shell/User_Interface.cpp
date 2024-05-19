@@ -2,7 +2,7 @@
 #include "Input_From_File.h"
 #include "Output_Into_File.h"
 #include "Sort.h"
-//#include "Module_Tests.h"
+#include "Module_Tests.h"
 #include "Algorithms_For_Filework.h"
 
 /// <summary>
@@ -15,8 +15,8 @@ void Print_Menu()
 	std::cout << "Смирнова Светлана 425 группа." << std::endl << "Лабораторная работа №2. Вариант 7." << std::endl;
 	std::cout << "Сортировка Шелла/Shellsort." << std::endl;
 	std::cout << "------------------------------------------------------------------------------------------------------" << std::endl;
-	std::cout << "Выберите нужный пункт меню:" << std::endl << "1 - Начать работу программы." << std::endl << 
-		"2 - Завершить работу программы" << std::endl << "> ";
+	std::cout << "Выберите нужный пункт меню:" << std::endl << "1 - Начать работу программы." << std::endl <<
+		"2 - Запустить модульный тест" << std::endl << "3 - Завершить работу программы" << std::endl << "> ";
 }
 
 /// <summary>
@@ -65,9 +65,9 @@ void Main_Menu()
 		case StartProgramm:
 			Start_Programm(vect,copyVect);
 			break;
-		//case StartModuleTests:
-			//Module_Tests();
-			//break;
+		case StartModuleTests:
+			Module_Tests();
+			break;
 		case StopProgramm:
 			break;
 		default:
